@@ -1,0 +1,16 @@
+{
+  "name": "ray-hao-playtogether",
+  "version": "1.0.0",
+  "description": "Ray Hào's PlayTogether gaming website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["gaming", "playtogether", "ray-hao", "website"],
+  "author": "Ray Hào",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^13.0.0"
+  }
+}
