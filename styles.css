@@ -5,11 +5,18 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    min-height: 100vh;
+    font-size: 1rem;
 }
 
 .container {
