@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test CSS Loading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .test-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+    </style>
+    <!-- Test external CSS -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <h1>Test CSS Loading</h1>
+    <div class="test-box">
+        <h2>Internal CSS Test</h2>
+        <p>Nếu bạn thấy text này có màu trắng và background gradient, internal CSS đã hoạt động.</p>
+    </div>
+    
+    <div class="container">
+        <div class="test-box">
+            <h2>External CSS Test</h2>
+            <p>Nếu container này có max-width 1200px và center, external CSS đã hoạt động.</p>
+        </div>
+    </div>
+    
+    <div class="test-box">
+        <h2>Files Check</h2>
+        <p>Kiểm tra console để xem có lỗi loading file không:</p>
+        <button onclick="checkFiles()">Check Files</button>
+    </div>
+
+    <script>
+        function checkFiles() {
+            console.log('=== CHECKING FILES ===');
+            
+            // Check CSS
+            fetch('./styles.css')
+                .then(response => {
+                    console.log('CSS Status:', response.status);
+                    if (response.ok) {
+                        console.log('✅ CSS file loaded successfully');
+                    } else {
+                        console.log('❌ CSS file failed to load');
+                    }
+                })
+                .catch(error => {
+                    console.log('❌ CSS file error:', error);
+                });
+            
+            // Check JS
+            fetch('./script.js')
+                .then(response => {
+                    console.log('JS Status:', response.status);
+                    if (response.ok) {
+                        console.log('✅ JS file loaded successfully');
+                    } else {
+                        console.log('❌ JS file failed to load');
+                    }
+                })
+                .catch(error => {
+                    console.log('❌ JS file error:', error);
+                });
+        }
+        
+        // Auto check on load
+        window.addEventListener('load', function() {
+            console.log('Page loaded, checking files...');
+            setTimeout(checkFiles, 1000);
+        });
+    </script>
+</body>
+</html>
